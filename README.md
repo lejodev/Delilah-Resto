@@ -17,7 +17,10 @@ Clone https://github.com/lejodev/Delilah-Resto.git to your local environment.
 create a ```.env``` file, type ```JWT_SECRET = 'Your preferred secret value'```. This environment variable is necessary to perform any JWT process
 
 ### Start local server
-In a new CMD, or in the text editor terminal go to the file ```cd Delilah-Resto``` once there, type ```npm install```, once process has finished, type ```npm run dev```
+In a new CMD, or in the text editor terminal go to the file ```cd Delilah-Resto``` once there, type ```npm install```, once the process has finished, type ```npm run dev```
 
 ### Run in Postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ec7aadb035961cb5a0f8)
+
+### API documentation
+In Swagger editor, import the ```Documentation.yaml``` to see the API documentation
