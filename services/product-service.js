@@ -1,4 +1,5 @@
-const sequelize = require("../controller/routes/connection");
+// const sequelize = require("../controller/routes/connection");
+const sequelize = require("../database/connection");
 
 const amountMatches = async (products) => {
   var counter = 0;

@@ -1,4 +1,5 @@
-const sequelize = require("../controller/routes/connection");
+// const sequelize = require("../controller/routes/connection");
+const sequelize = require("../database/connection");
 
 const createOrder = async (user, paymentMethod, products) => {
   sequelize
@@ -87,6 +88,57 @@ const updateOrder = async (orderId, orderStatus)  => {
     })
 }
 
+const orderExists = async (id) => {
+  const query = await sequelize.query("select * from `order` where id = :id", {
+    replacements: {
+      id: id
+    },
+    type: sequelize.QueryTypes.SELECT
+  })
+
+  return query.length === 1;
+}
+
+const deleteOrdersList = async (id) => {
+  
+  const order = await orderExists(id);
+
+  if (order) {
+    console.log('Exists');
+    await sequelize.query("delete from map_order_product where orderId = :id ", {
+      replacements: {
+        id: id,
+      },
+      type : sequelize.QueryTypes.DELETE
+    });
+    return true;
+  } else {
+    console.log('Doesn´t exists');
+    return false;
+  }
+
+}
+
+const deleteOrder = async (id) => {
+
+  const deleteOrder = await deleteOrdersList(id);
+
+  if (deleteOrder) {
+    
+    await sequelize.query("delete from `order` where id = :id", {
+      replacements: {
+        id: id
+      },
+      type: sequelize.QueryTypes.DELETE
+    })
+    console.log('WELL');
+    return Promise.resolve('Order deleted successdully');
+  } else {
+    console.log('BAD');
+    return Promise.reject(new Error('Order doesn´t exists'));
+  }
+}
+
 module.exports = {
   createOrder,
   myOrder,
@@ -94,5 +146,6 @@ module.exports = {
   totalOrder,
   detailedOrders,
   getOrderById,
-  updateOrder
+  updateOrder,
+  deleteOrder
 };

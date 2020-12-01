@@ -1,4 +1,5 @@
-const sequelize = require("../controller/routes/connection");
+// const sequelize = require("../controller/routes/connection");
+const sequelize = require("../database/connection");
 
 const checkUserName = async (userName) => {
   return await sequelize.query(
@@ -15,7 +16,6 @@ const checkUserName = async (userName) => {
 const signIn = async (requestBody) => {
   const result = await checkUserName(requestBody.userName);
   if (result.length > 0) {
-    console.log("Not possible to signin");
     return Promise.reject(new Error(`User with userName: ${requestBody.userName} already exists`));
   } else {
     return await sequelize.query(
@@ -32,7 +32,6 @@ const signIn = async (requestBody) => {
       { type: sequelize.QueryTypes.INSERT }
     );
   }
-  console.log(result);
 };
 
 const login = async (requestBody) => {

@@ -96,4 +96,12 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.delete('/:id', checkRole, async(req, res) => {
+  await orderService.deleteOrder(req.params.id).then((message) => {
+    res.status(200).send(message)
+  }).catch(err => {
+    res.status(404).send(`${err}`)
+  })
+})
+
 module.exports = router;

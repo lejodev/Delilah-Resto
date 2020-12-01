@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const sequelize = require("./connection");
+// const sequelize = require("./connection");
 const checkRole = require("../middlewares/checkRole");
 
 const productService = require("../../services/product-service");

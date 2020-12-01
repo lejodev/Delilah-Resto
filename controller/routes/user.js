@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const router = express.Router();
-const sequelize = require("./connection");
+// const sequelize = require("./connection");
 const jwt = require("jsonwebtoken");
 const user_service = require("../../services/user-service");
 const checkRole = require("../middlewares/checkRole");
