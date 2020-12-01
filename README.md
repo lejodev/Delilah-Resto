@@ -8,7 +8,7 @@ Clone https://github.com/lejodev/Delilah-Resto.git to your local environment.
 ```
 
 ### Set database
-* Start Mysql the service, in port 3306
+* To set database connection parameters, go to ```/database/db_connection_parameters``` and set your parameters
 * Once in the project, locate the file ```/model/model.sql``` and copy that
 * Paste this file in the file called ```bin``` inside the XAMPP file on your pc
 * Once there, use the CMD in this location. Type ```mysql -u 'Your MySQL userName'``` and then type ```source model.sql```
