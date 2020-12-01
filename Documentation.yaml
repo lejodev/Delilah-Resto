@@ -244,6 +244,27 @@ paths:
           description: "Numeric ID of the product"
       security:
         - bearerAuth: []
+    delete:
+      tags:
+       - order
+      summary: "Delete order"
+      operationId: "deleteOrder"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: "Numeric ID of the order"
+      responses: 
+        '200':
+          description: "order successfully deleted"
+        '400':
+          description: "Order doesn´t exists"
+        '401':
+          description: "you are not authorized to do this operation"
+      security:
+        - bearerAuth: []
 externalDocs:
   description: Find out more about Swagger
   url: 'http://swagger.io'
