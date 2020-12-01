@@ -1,7 +1,5 @@
 const connectionParameters = require('./db_connection_parameters');
 const Sequelize = require('sequelize');
-// const path = ('mysql://root@localhost:3306/DelilahResto');
-// const sequelize = new Sequelize(path, {operatorAliases : false});
 const sequelize = new Sequelize(connectionParameters.db_conf_dbName,
     connectionParameters.db_conf_user,
     connectionParameters.db_conf_password,
